@@ -12,6 +12,7 @@ page = driver.navigate.to(url)
 companyURLArray = []
 
 def companyURLScraper(driver, companyURLArray, pageNumber)
+	sleep 3
 	driver.find_elements(:css=>'.item_main').each{|div|
 		itemMainA = div.find_element(:css=>'.title a')
 		companyTitle = itemMainA.text
@@ -27,7 +28,6 @@ def companyURLScraper(driver, companyURLArray, pageNumber)
 	end
 
 	paginationToolbar.find_elements(:css=>'.btn')[-2].click # Clicking the next button
-	sleep 3
 	companyURLScraper(driver, companyURLArray, pageNumber+=1)
 end
 
