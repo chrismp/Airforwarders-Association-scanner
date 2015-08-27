@@ -40,16 +40,16 @@ driver.quit
 
 File.open("Airforwarders Association contacts.txt", "w"){|file|  
 	headersArray = [
-		'Airforwarders URL',
-		'Company',
+		# 'Airforwarders URL',
+		# 'Company',
 		'Contact person',
-		'Contact email',
-		'Company email',
-		'Website',
-		'Phone',
-		'Fax',
-		'Street',
-		'City, State, Zip'
+		'Contact email'#,
+		# 'Company email',
+		# 'Website',
+		# 'Phone',
+		# 'Fax',
+		# 'Street',
+		# 'City, State, Zip'
 	]
 	file.puts(headersArray.join("\t"))
 
@@ -58,16 +58,16 @@ File.open("Airforwarders Association contacts.txt", "w"){|file|
 			page = Nokogiri::HTML(open(companyURL))
 			listGroupItems = page.css('#secondary_content .list-group-item')
 			dataArray = [
-				companyURL,
-				page.css('h2').text,
+				# companyURL,
+				# page.css('h2').text,
 				getStringAfterColon(listGroupItems[0]),
-				getStringAfterColon(listGroupItems[1]),
-				getStringAfterColon(listGroupItems[2]),
-				getStringAfterColon(listGroupItems[3]),
-				getStringAfterColon(listGroupItems[4]),
-				getStringAfterColon(listGroupItems[5]),
-				listGroupItems[6].text.strip,
-				listGroupItems[7].text.strip
+				getStringAfterColon(listGroupItems[1])#,
+				# getStringAfterColon(listGroupItems[2]),
+				# getStringAfterColon(listGroupItems[3]),
+				# getStringAfterColon(listGroupItems[4]),
+				# getStringAfterColon(listGroupItems[5]),
+				# listGroupItems[6].text.strip,
+				# listGroupItems[7].text.strip
 			]
 			file.puts(dataArray.join("\t"))
 			p dataArray			
